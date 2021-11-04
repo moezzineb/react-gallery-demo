@@ -1,24 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react'
+import NavBar from './components/NavBar';
+import './App.css'
+import { Container, IconButton, Input, TextField } from '@mui/material';
+import { PhotoCamera } from '@mui/icons-material';
+import { styled } from "@mui/material/styles";
+import { ImageListing } from "./components/ImageList";
+import Store from "./contexts/StoreContext";
 
-function App() {
+const App = () => {
+  const Input = styled("input")({
+    display: "none",
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Store>
+      <NavBar />
+      <Container maxWidth="md">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "flex-end",
+            alignItems: "center",
+            marginTop: "20px",
+            marginBottom: "20px",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <label htmlFor="icon-button-file">
+            <Input accept="image/*" id="icon-button-file" type="file" />
+            <IconButton
+              color="primary"
+              aria-label="upload picture"
+              component="span"
+            >
+              <PhotoCamera />
+            </IconButton>
+          </label>
+        </div>
+        <div>
+          <TextField
+            id="standard-search"
+            label="Search name, collection, tag ..."
+            type="search"
+            variant="standard"
+            fullWidth
+          />
+        </div>
+        <div
+          style={{
+            marginTop: "20px",
+            width: "100%",
+          }}
+        >
+          <ImageListing />
+        </div>
+      </Container>
+    </Store>
   );
 }
 
