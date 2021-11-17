@@ -1,59 +1,39 @@
 import * as React from 'react'
 import NavBar from './components/NavBar';
 import './App.css'
-import { Container, IconButton, Input, TextField } from '@mui/material';
-import { PhotoCamera } from '@mui/icons-material';
-import { styled } from "@mui/material/styles";
-import { ImageListing } from "./components/ImageList";
 import Store from "./contexts/StoreContext";
+import { Home } from './pages/Home';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Collections from './pages/Collections';
+import SingleCollection from './pages/SingleCollection';
+import { SRLWrapper } from "simple-react-lightbox";
+import { SingleImage } from './pages/SingleImage';
 
 const App = () => {
-  const Input = styled("input")({
-    display: "none",
-  });
   return (
     <Store>
-      <NavBar />
-      <Container maxWidth="md">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "flex-end",
-            alignItems: "center",
-            marginTop: "20px",
-            marginBottom: "20px",
-          }}
-        >
-          <label htmlFor="icon-button-file">
-            <Input accept="image/*" id="icon-button-file" type="file" />
-            <IconButton
-              color="primary"
-              aria-label="upload picture"
-              component="span"
-            >
-              <PhotoCamera />
-            </IconButton>
-          </label>
-        </div>
-        <div>
-          <TextField
-            id="standard-search"
-            label="Search name, collection, tag ..."
-            type="search"
-            variant="standard"
-            fullWidth
-          />
-        </div>
-        <div
-          style={{
-            marginTop: "20px",
-            width: "100%",
-          }}
-        >
-          <ImageListing />
-        </div>
-      </Container>
+      <SRLWrapper>
+        <Router>
+          <NavBar />
+          <Switch>
+            {/* <Route path="/profile">
+            <Profile />
+          </Route> */}
+            <Route path="/image/:slug">
+              <SingleImage />
+            </Route>
+            <Route path="/collections/:slug">
+              <SingleCollection />
+            </Route>
+            <Route path="/collections">
+              <Collections />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      </SRLWrapper>
     </Store>
   );
 }

@@ -1,12 +1,19 @@
 import React, { createContext, useReducer } from "react";
-import Reducer from "../reducers/picturesReducer";
+import Reducer from "../reducers/StoreReducer";
 
 const initialState = {
   pics: [],
+  collections: [],
+  colcImages: [],
+  image: {},
   user: {},
+  query: "",
   auth: false,
-  error: null,
+  error: "",
+  loading: "",
 };
+
+export const Context = createContext(initialState);
 
 const Store = ({ children }) => {
   const [state, dispatch] = useReducer(Reducer, initialState);
@@ -15,5 +22,4 @@ const Store = ({ children }) => {
   );
 };
 
-export const Context = createContext(initialState);
 export default Store;

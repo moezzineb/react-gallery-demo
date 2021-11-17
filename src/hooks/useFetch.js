@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import LoadingProgres from "../components/LoadingProgress";
+import AlertIndicator from "../components/AlertIndicator";
+
 
 function useFetch(url) {
   const [data, setData] = useState(null);
@@ -7,7 +10,7 @@ function useFetch(url) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setLoading("loading...");
+    setLoading(<LoadingProgres />);
     setData(null);
     setError(null);
     const source = axios.CancelToken.source();
@@ -15,14 +18,12 @@ function useFetch(url) {
       .get(url, { cancelToken: source.token })
       .then((res) => {
         setLoading(false);
-        //checking for multiple responses for more flexibility
-        //with the url we send in.
         res.data.content && setData(res.data.content);
         res.content && setData(res.content);
       })
       .catch((err) => {
         setLoading(false);
-        setError("An error occurred. Awkward..");
+        setError(<AlertIndicator type="error" />);
       });
     return () => {
       source.cancel();
