@@ -17,16 +17,16 @@ export const SingleImage = () => {
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
   };
 
-  useEffect(async () => {
-    const loadContent = () => {
-      config.unsplash.photos.get({ photoId: Id }).then((json) => {
+  useEffect(() => {
+    const loadContent = async () => {
+      await config.unsplash.photos.get({ photoId: Id }).then((json) => {
         dispatch({ type: "SET_IMG", payload: json.response });
         console.log(json.response);
         console.log(state.image);
       });
     };
 
-    await loadContent();
+    loadContent();
   }, [Id]);
   return (
     <Container maxWidth="md">

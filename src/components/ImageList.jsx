@@ -30,6 +30,7 @@ export const ImageListing = ({ type }) => {
     }
 
     loadContent();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

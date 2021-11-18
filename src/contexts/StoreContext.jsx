@@ -11,6 +11,7 @@ const initialState = {
   auth: false,
   error: "",
   loading: "",
+  quote: "",
 };
 
 export const Context = createContext(initialState);

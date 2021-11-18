@@ -4,12 +4,14 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { Context } from "../contexts/StoreContext";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
 import { useHistory, Link } from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
+import GoogleIcon from "@mui/icons-material/Google";
+import { signInWithGoogle } from "../services/Firebase";
 
 export default function NavBar() {
   const [state, dispatch] = React.useContext(Context);
@@ -55,7 +57,7 @@ export default function NavBar() {
           >
             <PermMediaIcon />
           </IconButton>
-          {/* {state.auth ? (
+          {state.auth ? (
             <div>
               <IconButton
                 size="large"
@@ -65,7 +67,7 @@ export default function NavBar() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                <Avatar alt="Remy Sharp" src={`${state?.user?.photoURL}`} />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -93,30 +95,13 @@ export default function NavBar() {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleMenu}
+                onClick={signInWithGoogle}
                 color="inherit"
               >
-                <AccountCircle />
+                <GoogleIcon />
               </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={() => console.log("Login")}>Login</MenuItem>
-              </Menu>
             </div>
-          )} */}
+          )}
         </Toolbar>
       </AppBar>
     </Box>

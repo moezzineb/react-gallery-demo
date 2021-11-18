@@ -43,7 +43,7 @@ const Reducer = (state, action) => {
     case "SET_AUTH":
       return {
         ...state,
-        auth: !action.payload,
+        auth: action.payload,
       };
     case "SET_CIMG":
       return {
@@ -54,6 +54,11 @@ const Reducer = (state, action) => {
       return {
         ...state,
         image: action.payload,
+      };
+    case "SET_QTE":
+      return {
+        ...state,
+        quote: action.payload,
       };
     default:
       return state;

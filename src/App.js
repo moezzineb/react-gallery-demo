@@ -3,7 +3,7 @@ import NavBar from './components/NavBar';
 import './App.css'
 import Store from "./contexts/StoreContext";
 import { Home } from './pages/Home';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Collections from './pages/Collections';
 import SingleCollection from './pages/SingleCollection';
 import { SRLWrapper } from "simple-react-lightbox";
@@ -16,9 +16,6 @@ const App = () => {
         <Router>
           <NavBar />
           <Switch>
-            {/* <Route path="/profile">
-            <Profile />
-          </Route> */}
             <Route path="/image/:slug">
               <SingleImage />
             </Route>
