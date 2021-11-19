@@ -1,5 +1,5 @@
 import { PhotoCamera } from "@mui/icons-material";
-import { IconButton, Input } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { styled } from "@mui/system";
 import React from "react";
 

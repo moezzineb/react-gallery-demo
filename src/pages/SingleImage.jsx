@@ -27,6 +27,7 @@ export const SingleImage = () => {
     };
 
     loadContent();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Id]);
   return (
     <Container maxWidth="md">

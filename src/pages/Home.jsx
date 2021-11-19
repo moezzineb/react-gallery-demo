@@ -3,12 +3,11 @@ import React, { useContext, useEffect } from "react";
 import { ImageListing } from "../components/ImageList";
 import { RandomQuote } from "../components/RandomQuote";
 import SearchForm from "../components/SearchForm";
-import Upload from "../components/Upload";
 import { Context } from "../contexts/StoreContext";
 import { auth } from "../services/Firebase";
-import unsplashServ from "../services/unsplash.service";
 
 export const Home = () => {
+  // eslint-disable-next-line no-unused-vars
   const [state, dispatch] = useContext(Context);
 
   useEffect(() => {
