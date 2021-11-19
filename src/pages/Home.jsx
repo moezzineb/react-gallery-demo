@@ -6,13 +6,13 @@ import SearchForm from "../components/SearchForm";
 import Upload from "../components/Upload";
 import { Context } from "../contexts/StoreContext";
 import { auth } from "../services/Firebase";
+import unsplashServ from "../services/unsplash.service";
 
 export const Home = () => {
   const [state, dispatch] = useContext(Context);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      console.log(user.multiFactor.user);
       dispatch({ type: "SET_AUTH", payload: true });
       dispatch({ type: "SET_USER", payload: user });
     });
@@ -21,7 +21,7 @@ export const Home = () => {
 
   return (
     <Container maxWidth="md">
-      <div
+      {/* <div
         style={{
           display: "flex",
           flexDirection: "row",
@@ -32,7 +32,7 @@ export const Home = () => {
         }}
       >
         <Upload />
-      </div>
+      </div> */}
       <div
         style={{
           marginTop: "20px",

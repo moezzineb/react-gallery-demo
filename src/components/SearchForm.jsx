@@ -2,14 +2,13 @@ import React, { useContext } from "react";
 import { Button, TextField } from "@mui/material";
 import { Context } from "../contexts/StoreContext";
 import config from "../constants/Config";
-import LoadingProgres from "./LoadingProgress";
 
 const SearchForm = () => {
   const [state, dispatch] = useContext(Context);
 
   const searchPhotos = async (e) => {
     e.preventDefault();
-    dispatch({ type: "SET_LOAD", payload: <LoadingProgres type="cercular" /> });
+    dispatch({ type: "SET_LOAD", payload: "Loading ..." });
     config.unsplash.search
       .getPhotos({
         query: state.query,

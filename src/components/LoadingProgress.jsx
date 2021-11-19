@@ -3,17 +3,6 @@ import Box from "@mui/material/Box";
 import { LinearProgress } from "@mui/material";
 
 const LoadingProgres = ({ type }) => {
-  const loadingCompo = () => {
-    switch (type) {
-      case "cercular":
-        return <CircularProgress />;
-      case "linear":
-        return <LinearProgress />;
-
-      default:
-        return <CircularProgress />;
-    }
-  };
   return (
     <Box
       sx={{
@@ -25,7 +14,7 @@ const LoadingProgres = ({ type }) => {
         marginBottom: "20px",
       }}
     >
-      {loadingCompo}
+      {type === "linear" ? <LinearProgress /> : <CircularProgress />}
     </Box>
   );
 };

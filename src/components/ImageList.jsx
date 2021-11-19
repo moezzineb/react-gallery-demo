@@ -7,7 +7,6 @@ import {
 } from "@mui/material";
 import { Context } from "../contexts/StoreContext";
 import config from "../constants/Config";
-import LoadingProgres from "./LoadingProgress";
 import ImageSearchIcon from "@mui/icons-material/ImageSearch";
 import { useHistory } from "react-router-dom";
 
@@ -17,13 +16,12 @@ export const ImageListing = ({ type }) => {
 
   useEffect(() => {
     function loadContent() {
-      dispatch({ type: "SET_LOAD", payload: <LoadingProgres type="linear" /> });
+      dispatch({ type: "SET_LOAD", payload: "Loading ..." });
       if (!type) {
         config.unsplash.photos
           .getRandom({ count: config.perPage })
           .then((json) => {
             dispatch({ type: "SET_PICS", payload: json.response });
-            console.log(json.response);
             dispatch({ type: "SET_LOAD", payload: null });
           });
       }

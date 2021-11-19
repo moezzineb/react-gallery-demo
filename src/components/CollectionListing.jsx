@@ -8,7 +8,6 @@ import {
 import InfoIcon from "@mui/icons-material/Info";
 import { Context } from "../contexts/StoreContext";
 import config from "../constants/Config";
-import LoadingProgres from "./LoadingProgress";
 import Typography from "@mui/material/Typography";
 import { useHistory } from "react-router-dom";
 
@@ -20,13 +19,12 @@ export const CollectionListing = () => {
     const loadContent = () => {
       dispatch({
         type: "SET_LOAD",
-        payload: <LoadingProgres type="linear" />,
+        payload: "Loading ...",
       });
       config.unsplash.collections
         .list({ page: 1, perPage: config.perPage })
         .then((json) => {
           dispatch({ type: "SET_CLC", payload: json.response.results });
-          //   console.log(state.collections);
           dispatch({ type: "SET_LOAD", payload: null });
         });
     };
