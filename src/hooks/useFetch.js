@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import LoadingProgres from "../components/LoadingProgress";
-import AlertIndicator from "../components/AlertIndicator";
-
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import LoadingProgres from '../components/LoadingProgress';
+import AlertIndicator from '../components/AlertIndicator';
 
 function useFetch(url) {
   const [data, setData] = useState(null);
@@ -21,7 +20,7 @@ function useFetch(url) {
         res.data.content && setData(res.data.content);
         res.content && setData(res.content);
       })
-      .catch((err) => {
+      .catch(() => {
         setLoading(false);
         setError(<AlertIndicator type="error" />);
       });

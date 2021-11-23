@@ -1,5 +1,5 @@
-import React, { createContext, useReducer } from "react";
-import Reducer from "../reducers/StoreReducer";
+import React, { createContext, useReducer } from 'react';
+import Reducer from '../reducers/StoreReducer';
 
 const initialState = {
   pics: [],
@@ -7,20 +7,19 @@ const initialState = {
   colcImages: [],
   image: {},
   user: {},
-  query: "",
+  query: '',
   auth: false,
-  error: "",
-  loading: "",
-  quote: "",
+  error: '',
+  loading: '',
+  quote: ''
 };
 
 export const Context = createContext(initialState);
 
+// eslint-disable-next-line react/prop-types
 const Store = ({ children }) => {
   const [state, dispatch] = useReducer(Reducer, initialState);
-  return (
-    <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>
-  );
+  return <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>;
 };
 
 export default Store;

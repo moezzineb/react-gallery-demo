@@ -1,17 +1,16 @@
-import axios from "axios";
-import { createApi } from "unsplash-js";
-import config from "../constants/Config";
+import axios from 'axios';
+import { createApi } from 'unsplash-js';
+import config from '../constants/Config';
 
 const unsplash = createApi({
-  accessKey: config.API_KEY,
+  accessKey: config.API_KEY
 });
 
 class unsplashService {
-
-  async hello(){
+  async hello() {
     try {
       axios
-        .get("https://jsonplaceholder.typicode.com/photos")
+        .get('https://jsonplaceholder.typicode.com/photos')
         .then((res) => {
           console.log(res.data);
         })
@@ -29,7 +28,7 @@ class unsplashService {
         .getPhotos({
           query: query,
           page: page_num,
-          perPage: pic_per_page,
+          perPage: pic_per_page
         })
         .then((json) => {
           return json.response.results;

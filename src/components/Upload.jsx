@@ -1,11 +1,11 @@
-import { PhotoCamera } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
-import { styled } from "@mui/system";
-import React from "react";
+import { PhotoCamera } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
+import { styled } from '@mui/system';
+import React from 'react';
 
 const Upload = () => {
-  const Input = styled("input")({
-    display: "none",
+  const Input = styled('input')({
+    display: 'none'
   });
   return (
     <label htmlFor="icon-button-file">

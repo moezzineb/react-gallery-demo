@@ -1,64 +1,64 @@
 const Reducer = (state, action) => {
   switch (action.type) {
-    case "SET_PICS":
+    case 'SET_PICS':
       return {
         ...state,
-        pics: action.payload,
+        pics: action.payload
       };
-    case "ADD_PIC":
+    case 'ADD_PIC':
       return {
         ...state,
-        pics: state.pics.concat(action.payload),
+        pics: state.pics.concat(action.payload)
       };
-    case "REMOVE_PIC":
+    case 'REMOVE_PIC':
       return {
         ...state,
-        pics: state.pics.filter((pic) => pic.id !== action.payload),
+        pics: state.pics.filter((pic) => pic.id !== action.payload)
       };
-    case "SET_ERROR":
+    case 'SET_ERROR':
       return {
         ...state,
-        error: action.payload,
+        error: action.payload
       };
-    case "SET_USER":
+    case 'SET_USER':
       return {
         ...state,
-        user: action.payload,
+        user: action.payload
       };
-    case "SET_CLC":
+    case 'SET_CLC':
       return {
         ...state,
-        collections: action.payload,
+        collections: action.payload
       };
-    case "SET_QRY":
+    case 'SET_QRY':
       return {
         ...state,
-        query: action.payload,
+        query: action.payload
       };
-    case "SET_LOAD":
+    case 'SET_LOAD':
       return {
         ...state,
-        loading: action.payload,
+        loading: action.payload
       };
-    case "SET_AUTH":
+    case 'SET_AUTH':
       return {
         ...state,
-        auth: action.payload,
+        auth: action.payload
       };
-    case "SET_CIMG":
+    case 'SET_CIMG':
       return {
         ...state,
-        colcImages: action.payload,
+        colcImages: action.payload
       };
-    case "SET_IMG":
+    case 'SET_IMG':
       return {
         ...state,
-        image: action.payload,
+        image: action.payload
       };
-    case "SET_QTE":
+    case 'SET_QTE':
       return {
         ...state,
-        quote: action.payload,
+        quote: action.payload
       };
     default:
       return state;

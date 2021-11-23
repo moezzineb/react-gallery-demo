@@ -1,17 +1,17 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import { Context } from "../contexts/StoreContext";
-import PermMediaIcon from "@mui/icons-material/PermMedia";
-import { useHistory, Link } from "react-router-dom";
-import Avatar from "@mui/material/Avatar";
-import GoogleIcon from "@mui/icons-material/Google";
-import { signInWithGoogle } from "../services/Firebase";
-import { auth } from "../services/Firebase";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import { Context } from '../contexts/StoreContext';
+import PermMediaIcon from '@mui/icons-material/PermMedia';
+import { useHistory, Link } from 'react-router-dom';
+import Avatar from '@mui/material/Avatar';
+import GoogleIcon from '@mui/icons-material/Google';
+import { signInWithGoogle } from '../services/Firebase';
+import { auth } from '../services/Firebase';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 export default function NavBar() {
   const [state, dispatch] = React.useContext(Context);
@@ -22,11 +22,11 @@ export default function NavBar() {
       .signOut()
       .then(function (e) {
         console.log(e);
-        dispatch({ type: "SET_AUTH", payload: false });
-        dispatch({ type: "SET_USER", payload: null });
+        dispatch({ type: 'SET_AUTH', payload: false });
+        dispatch({ type: 'SET_USER', payload: null });
       })
       .catch(function (error) {
-        dispatch({ type: "SET_ERROR", payload: error });
+        dispatch({ type: 'SET_ERROR', payload: error });
         console.log(error);
       });
   };
@@ -38,13 +38,12 @@ export default function NavBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link
               style={{
-                textTransform: "none",
-                color: "#fff",
-                textDecoration: "none",
+                textTransform: 'none',
+                color: '#fff',
+                textDecoration: 'none'
               }}
               to="/"
-              underline="none"
-            >
+              underline="none">
               Share Daily
             </Link>
           </Typography>
@@ -53,9 +52,8 @@ export default function NavBar() {
             aria-label="account of current user"
             aria-controls="menu-appbar"
             aria-haspopup="true"
-            onClick={() => history.push("/collections")}
-            color="inherit"
-          >
+            onClick={() => history.push('/collections')}
+            color="inherit">
             <PermMediaIcon />
           </IconButton>
           {state.user && state.auth ? (
@@ -65,9 +63,8 @@ export default function NavBar() {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={() => console.log("nothing here")}
-                color="inherit"
-              >
+                onClick={() => console.log('nothing here')}
+                color="inherit">
                 <Avatar alt="Remy Sharp" src={`${state?.user?.photoURL}`} />
               </IconButton>
               <IconButton
@@ -76,8 +73,7 @@ export default function NavBar() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleLogout}
-                color="inherit"
-              >
+                color="inherit">
                 <ExitToAppIcon />
               </IconButton>
             </div>
@@ -89,8 +85,7 @@ export default function NavBar() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={signInWithGoogle}
-                color="inherit"
-              >
+                color="inherit">
                 <GoogleIcon />
               </IconButton>
             </div>

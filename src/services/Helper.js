@@ -1,15 +1,14 @@
 export const reformArrayPics = (data) => {
-    let newArr = [];
+  let newArr = [];
 
-    data.forEach(el => {
-        let newObj = {
-          img: el.urls.thumb,
-          title: el.description
-        };
+  data.forEach((el) => {
+    let newObj = {
+      img: el.urls.thumb,
+      title: el.description
+    };
 
-        new.newArr.push(newObj);
-    })
+    newArr.push(newObj);
+  });
 
-
-    return newArr;
-}
+  return newArr;
+};
